@@ -1,0 +1,10 @@
+FROM python:3.10
+
+RUN mkdir /opt/client
+WORKDIR /opt/client
+
+COPY client.py .
+COPY requirements.client.txt requirements.txt
+
+RUN pip install -U pip -Ur requirements.txt
+ENTRYPOINT ["python", "client.py"]

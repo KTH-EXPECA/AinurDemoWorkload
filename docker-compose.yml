@@ -1,0 +1,17 @@
+---
+version: "3"
+services:
+  backend:
+    image: molguin/ainurdemo:backend
+    hostname: backend
+    restart: always
+
+  client:
+    image: molguin/ainurdemo:client
+    hostname: client
+    ports:
+      - "80:8080/tcp"
+    command: "backend -p 80"
+    depends_on:
+      - backend
+    restart: always

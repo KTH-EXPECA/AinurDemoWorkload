@@ -1,0 +1,6 @@
+dash
+numpy
+click
+scikit-learn
+pandas
+requests

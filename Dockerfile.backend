@@ -1,0 +1,13 @@
+FROM python:3.10
+
+RUN mkdir /opt/server
+WORKDIR /opt/server
+
+COPY backend.py .
+COPY training/forest.model training/forest.model
+COPY requirements.backend.txt requirements.txt
+
+RUN pip install -U pip -Ur requirements.txt
+
+ENV FLASK_APP=backend
+ENTRYPOINT ["flask", "run", "--host=0.0.0.0", "--port=80", "--no-reload", "--without-threads"]
