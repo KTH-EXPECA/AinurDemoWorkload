@@ -2,13 +2,14 @@
 DOCKER_CMD = docker --config ./.docker
 BUILD_CMD = $(DOCKER_CMD) buildx build --push --platform linux/arm64,linux/amd64
 DOCKER_USER = expeca
-IMG_REPO = $(DOCKER_USER)/simple-network-load
+IMG_REPO_CLIENT = $(DOCKER_USER)/demo_ew22_client
+IMG_REPO_BACKEND = $(DOCKER_USER)/demo_ew22_backend
 
-all: image
-.PHONY: all clean
+all: client backend
+.PHONY: all
 
-image: Dockerfile
-	$(BUILD_CMD) -t $(IMG_REPO):latest -f $< .
+client: Dockerfile.client
+	$(BUILD_CMD) -t $(IMG_REPO_CLIENT):latest -f $< .
 
-clean:
-	$(DOCKER_CMD) image rm $(IMG_REPO):latest
+backend: Dockerfile.backend
+	$(BUILD_CMD) -t $(IMG_REPO_BACKEND):latest -f $< .
