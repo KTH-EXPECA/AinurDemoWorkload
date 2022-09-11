@@ -278,7 +278,8 @@ fabric.properties
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -525,3 +526,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,pycharm+all,jetbrains+all,python,virtualenv,linux,macos,windows,vim,flask
 
+.docker
